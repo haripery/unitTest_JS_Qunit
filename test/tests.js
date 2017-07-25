@@ -17,22 +17,24 @@ $('#qunit-dom-testing').load('../index.html #main-wrap',function(responseText, s
         });
 
 function runTests () {
-    var inputSticky = null;
+    var inputSticky;
+    var post;
 
     QUnit.module( "Module A:Build Notes",{
-        setup: function () {
+        beforeEach: function () {
             inputSticky = $("input[name=stickyinput]");
+            post = $('.post').length;
         }
     });
         //Selecting Necessary Components
 
         QUnit.test( "Test case 1: Check Notes Empty", function( assert ) {
-            var list= $('.post').length;                                          //getting the length of li(Notes)
+            var list= post;                                          //getting the length of li(Notes)
             assert.equal( list,0, "Notes empty" );                                // verifying whether it is zero
         });
 
         QUnit.test("Test Case 2: Default color of Post-it Notes",function (assert) {
-            assert.equal($("input[name=stickyinput]").css('background-color'),'rgb(255, 255, 0)', "Default Color is Yellow" );       //Default sticky input value is Zero
+            assert.equal(inputSticky.css('background-color'),'rgb(255, 255, 0)', "Default Color is Yellow" );       //Default sticky input value is Zero
         });
 
         QUnit.test("Test Case 3: Check the Placeholder Default value",function (assert) {
@@ -62,6 +64,7 @@ function runTests () {
             var orange = $('#orange');
             var pink = $('#pink');
             var cyan = $('#cyan');
+            console.log(inputSticky.css('background-color'));
             //var inputSticky = $("input[name=stickyinput]");
             orange.on( "click", function() {
             orangeClick();
@@ -92,7 +95,7 @@ function runTests () {
             addNotes();                                                            //Adding Notes for Selection
             assert.equal($('.post').length,1, "Notes1 Added Successfully for Deletion" );
             deleteNotes('.post');                                                  //Deleting Notes
-            assert.equal($('.post').length,0, "Notes1 Successfully deleted" );
+            assert.equal(post,0, "Notes1 Successfully deleted" );
         });
 
     QUnit.log(function( details ) {                                                 //Consolidated Log for individual Test Cases
