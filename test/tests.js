@@ -6,19 +6,18 @@ QUnit.begin(function( details ) {
 
 $('#qunit-dom-testing').load('../index.html #main-wrap',function(responseText, statusText, xhr)
         {
-                if(statusText == "success"){
+                if(statusText === "success"){
                     $.get( "../lib/main.css", function( data ) {
                         $('head').append("<style>"+data+"</style>");
                         runTests();
                     });
                 }
-                if(statusText == "error")
+                if(statusText === "error")
                         console.log("An error occurred: " + xhr.status + " - " + xhr.statusText);
         });
 
 function runTests () {
     var inputSticky = null;
-    console.log(inputSticky);
 
     QUnit.module( "Module A:Build Notes",{
         setup: function () {
@@ -48,7 +47,7 @@ function runTests () {
 
         QUnit.test("Test Case 4: Color Control System",function (assert) {
             assert.expect(3);
-            var inputSticky = $("input[name=stickyinput]");
+            //var inputSticky = $("input[name=stickyinput]");
             orangeClick();                                                         //Validating Color Functions
             assert.equal(inputSticky.css('background-color'),'rgb(255, 165, 0)', "orange Function passed !" );
             pinkClick();
@@ -63,7 +62,7 @@ function runTests () {
             var orange = $('#orange');
             var pink = $('#pink');
             var cyan = $('#cyan');
-            var inputSticky = $("input[name=stickyinput]");
+            //var inputSticky = $("input[name=stickyinput]");
             orange.on( "click", function() {
             orangeClick();
             assert.equal(inputSticky.css('background-color'),'rgb(255, 165, 0)', "orange Button Working Fine" );
