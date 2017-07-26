@@ -6,8 +6,8 @@ $('#qunit-dom-testing').load('../index.html #main-wrap',function(responseText, s
 {
         if(statusText === "success"){
             $.get( "../lib/main.css", function( data ) {
-                $('head').append("<style>"+data+"</style>");
-                runTests();
+                $('head').append("<style>"+data+"</style>");                                                            //Loading CSS File
+                runTests();                                                                                             //Run QUnit Test function
             });
         }
         if(statusText === "error")
@@ -17,8 +17,8 @@ function runTests () {
     //Declaring variables
     var inputSticky;
     var post;
-
-    QUnit.module( "Module A:Build Notes",{
+    //START OF THE TEST SUITE
+    QUnit.module( "Module A:Build Notes",{                                                                              //Module A Test cases
         beforeEach: function () {
             inputSticky = $("input[name=stickyinput]");
             post = $('.post').length;
@@ -26,15 +26,15 @@ function runTests () {
     });
         //Selecting Necessary Components
         QUnit.test( "Test case 1: Check Notes Empty", function( assert ) {
-            assert.equal( post,0, "Notes empty" );                                // verifying whether the length of li(Notes) is zero
+            assert.equal( post,0, "Notes empty" );                                                                      // verifying whether the length of li(Notes) is zero
         });
 
         QUnit.test("Test Case 2: Default color of Post-it Notes",function (assert) {
-            assert.equal(inputSticky.css('background-color'),'rgb(255, 255, 0)', "Default Color is Yellow" );       //Default sticky input value is Zero
+            assert.equal(inputSticky.css('background-color'),'rgb(255, 255, 0)', "Default Color is Yellow" );           //Default sticky input value is Zero
         });
 
         QUnit.test("Test Case 3: Check the Placeholder Default value",function (assert) {
-            var done = assert.async();                                            //Implementing Async Function using Ajax Jquery get()
+            var done = assert.async();                                                                                  //Implementing Async Function using Ajax Jquery get()
             $.get( "../index.html", function( data ) {
                 var buffer =null;
                 buffer = ($(data).find('#sticky').attr('placeholder'));
@@ -45,7 +45,7 @@ function runTests () {
         QUnit.test("Test Case 4: Color Control System",function (assert) {
             assert.expect(3);
             //var inputSticky = $("input[name=stickyinput]");
-            orangeClick();                                                         //Validating Color Functions
+            orangeClick();                                                                                              //Validating Color Functions
             assert.equal(inputSticky.css('background-color'),'rgb(255, 165, 0)', "orange Function passed !" );
             pinkClick();
             assert.equal(inputSticky.css('background-color'),'rgb(255, 192, 203)', "Pink Function passed !" );
@@ -74,37 +74,39 @@ function runTests () {
             });
             cyan.trigger( "click" );
         });
-    QUnit.module( "Module B:Add Notes",{
+    QUnit.module( "Module B:Add Notes",{                                                                                //Module B
         beginEach:function () {
             post = $('.post').length;
         }
     });
         QUnit.test("Test Case 6: Add Notes Test",function (assert) {
-            addNotes();                                                            //Adding Notes
+            addNotes();                                                                                                 //Adding Notes
             assert.equal($('.post').length,1, "1st Notes Added Successfully" );
             });
-    QUnit.module( "Module C:Delete Notes" );
+    QUnit.module( "Module C:Delete Notes" );                                                                            //Module C
         QUnit.test( "test case 6:Delete Functionality check", function( assert ) {
             assert.expect(2);
-            addNotes();                                                            //Adding Notes for Selection
+            addNotes();                                                                                                 //Adding Notes for Selection
             assert.equal($('.post').length,1, "Notes1 Added Successfully for Deletion" );
-            deleteNotes('.post');                                                  //Deleting Notes
+            deleteNotes('.post');                                                                                       //Deleting Notes
             assert.equal(post,0, "Notes1 Successfully deleted" );
         });
-    QUnit.begin(function( details ) {
+
+    //CONSOLE LOG CODE
+    QUnit.begin(function( details ) {                                                                                   //Notify the total no. of tests to be done
         console.log( "TOTAL TEST AMOUNT:", details.totalTests ,'\n');
     });
-    QUnit.moduleStart(function( details ) {
+    QUnit.moduleStart(function( details ) {                                                                             //Notify which test module is currently running
         console.log( "NOW RUNNING: ", details.name );
     });
-    QUnit.moduleDone(function( details ) {
+    QUnit.moduleDone(function( details ) {                                                                              //Notify end of the module
         console.log( "FINISHED RUNNING: ", details.name, "Failed/total: ", details.failed, details.total,'\n');
     });
 
-    QUnit.log(function( details ) {
+    QUnit.log(function( details ) {                                                                                     //Provides each and every assertion log
         console.log( "Log: ", details.result, details.message );
     });
-    QUnit.log(function( details ) {                                                 //This code will intimate if there is any errors in Test Case in console
+    QUnit.log(function( details ) {                                                                                     //This code will intimate if there is any errors in Test Case in console
       if ( details.result ) {
         return;
       }
@@ -119,8 +121,7 @@ function runTests () {
       }
       console.log( output );
     });
-    QUnit.done(function( details ) {                                                //Summary of the Test Suite
+    QUnit.done(function( details ) {                                                                                    //Summary of the Test Suite
         console.log( 'SUMMARY:\n',"Total: ", details.total, " Failed: ", details.failed, " Passed: ", details.passed, " Runtime: ", details.runtime );
     });
 }
-
