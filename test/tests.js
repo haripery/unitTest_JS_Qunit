@@ -6,8 +6,8 @@ $('#qunit-dom-testing').load('../index.html #main-wrap',function(responseText, s
 {
         if(statusText === "success"){
             $.get( "../lib/main.css", function( data ) {
-                $('head').append("<style>"+data+"</style>");                                                            //Loading CSS File
-                runTests();                                                                                             //Run QUnit Test function
+                $('head').append("<style>"+data+"</style>");
+                runTests();                                           //Loading CSS File and Run QUnit Test function
             });
         }
         if(statusText === "error")
@@ -21,12 +21,11 @@ function runTests () {
     QUnit.module( "Module A:Build Notes",{                                                                              //Module A Test cases
         beforeEach: function () {
             inputSticky = $(".stickyclass");
-            post = $('.post').length;
         }
     });
         //Selecting Necessary Components
         QUnit.test( "Test case 1: Check Notes Empty", function( assert ) {
-            assert.equal($('.post').length,0, "Notes empty" );                                                                      // verifying whether the length of li(Notes) is zero
+            assert.equal($('.post').length,1, "Notes empty" );                                                       // verifying whether the length of li(Notes) is zero
         });
 
         QUnit.test("Test Case 2: Default color of Post-it Notes",function (assert) {
@@ -73,30 +72,18 @@ function runTests () {
             });
             cyan.trigger( "click" );
         });
-    QUnit.module( "Module B:Add Notes",{                                                                              //Module A Test cases
-        beforeEach: function () {
-            inputSticky = $("input[name=stickyinput]");
-            post = $('.post').length;
-        }
-    });
+    QUnit.module( "Module B:Add Notes");
         QUnit.test("Test Case 6: Add Notes Test",function (assert) {
-            addNotes();                                                                                                 //Adding Notes
+            addNotes();                                                                                                 //Module B: Adding Notes
             assert.equal($('.post').length,1, "1st Notes Added Successfully" );
             });
-    QUnit.module( "Module C:Delete Notes" ,{                                                                              //Module A Test cases
-        beforeEach: function () {
-            inputSticky = $("input[name=stickyinput]");
-            post = $('.post').length;
-        }
-    });                                                                            //Module C
+    QUnit.module( "Module C:Delete Notes");                                                                             //Module C: Delete Notes
         QUnit.test( "test case 6:Delete Functionality check", function( assert ) {
             assert.expect(2);
-            addNotes();                                                                                                //Adding Notes for Selection
-            post = $('.post').length;
-            assert.equal(post,1, "Notes1 Added Successfully for Deletion" );
+            addNotes();                                                                                                 //Adding Notes for Selection
+            assert.equal($('.post').length,1, "Notes1 Added Successfully for Deletion" );
             deleteNotes('.post');                                                                                       //Deleting Notes
-            post = $('.post').length;
-            assert.equal(post,0, "Notes1 Successfully deleted" );
+            assert.equal($('.post').length,0, "Notes1 Successfully deleted" );
         });
 
     //CONSOLE LOG CODE

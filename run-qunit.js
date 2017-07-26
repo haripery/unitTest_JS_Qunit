@@ -50,13 +50,15 @@ page.onConsoleMessage = function(msg) {
 };
 
 page.open(system.args[1], function(status){
+    console.log(status);
     if (status !== "success") {
         console.log("Unable to access network");
-        phantom.exit(1);
-    } else {
+        phantom.exit(1);}
+    else{
         waitFor(function(){
             return page.evaluate(function(){
                 var el = document.getElementById('qunit-testresult');
+                console.log(el);
                 if (el && el.innerText.match('completed')) {
                     return true;
                 }
