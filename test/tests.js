@@ -94,7 +94,6 @@ function runTests () {
         console.log( "NOW RUNNING: ", details.name );
     });
     QUnit.moduleDone(function( details ) {                                                                              //Notify end of the module
-        console.log( "FINISHED RUNNING: ", details.name, "Failed/total: ", details.failed, details.total,'\n');
         if (details.failed>0){
             console.log(' --------------------------------------------------------------------');
             console.log('| ABORT UNIT TEST : TEST CASE FAILED : REMAINING TEST CASES SKIPPED |');
