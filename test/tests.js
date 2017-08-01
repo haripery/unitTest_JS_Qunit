@@ -25,7 +25,7 @@ function runTests () {
     });
         //Selecting Necessary Components
         QUnit.test( "Test case 1: Check Notes Empty", function( assert ) {
-            assert.equal($('.post').length,1, "Notes empty" );                                                       // verifying whether the length of li(Notes) is zero
+            assert.equal($('.post').length,0, "Notes empty" );                                                       // verifying whether the length of li(Notes) is zero
         });
 
         QUnit.test("Test Case 2: Default color of Post-it Notes",function (assert) {
@@ -95,6 +95,15 @@ function runTests () {
     });
     QUnit.moduleDone(function( details ) {                                                                              //Notify end of the module
         console.log( "FINISHED RUNNING: ", details.name, "Failed/total: ", details.failed, details.total,'\n');
+        if (details.failed>0){
+            console.log(' --------------------------------------------------------------------');
+            console.log('| ABORT UNIT TEST : TEST CASE FAILED : REMAINING TEST CASES SKIPPED |');
+            console.log(' --------------------------------------------------------------------');
+            QUnit.config.queue.length = 0;
+        }
+        else{
+            console.log( "Finished running: ", details.name, "Failed/total: ", details.failed, details.total );
+        }
     });
 
     QUnit.log(function( details ) {                                                                                     //Provides each and every assertion log
@@ -116,6 +125,6 @@ function runTests () {
       console.log( output );
     });
     QUnit.done(function( details ) {                                                                                    //Summary of the Test Suite
-        console.log( 'SUMMARY:\n',"Total: ", details.total, " Failed: ", details.failed, " Passed: ", details.passed, " Runtime: ", details.runtime );
+        console.log( 'SUMMARY:\n',"Total assertions: ", details.total, " Failed: ", details.failed, " Passed: ", details.passed, " Runtime: ", details.runtime );
     });
 }
