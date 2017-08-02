@@ -96,7 +96,7 @@ function runTests () {
     QUnit.moduleDone(function( details ) {                                                                              //Notify end of the module
         if (details.failed>0){
             console.log(' --------------------------------------------------------------------');
-            console.log('| ABORT UNIT TEST : TEST CASE FAILED : REMAINING TEST CASES SKIPPED |');
+            console.log('| ABORTING UNIT TEST : TEST CASE FAILED : REMAINING TEST CASES SKIPPED |');   // For the Continuous Integration
             console.log(' --------------------------------------------------------------------');
             QUnit.config.queue.length = 0;
         }
