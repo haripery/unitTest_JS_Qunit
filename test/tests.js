@@ -25,7 +25,7 @@ function runTests () {
     });
         //Selecting Necessary Components
         QUnit.test( "Test case 1: Check Notes Empty", function( assert ) {
-            assert.equal($('.post').length,1, "Notes empty" );                                                       // verifying whether the length of li(Notes) is zero
+            assert.equal($('.post').length,0, "Notes empty" );                                                       // verifying whether the length of li(Notes) is zero
         });
 
         QUnit.test("Test Case 2: Default color of Post-it Notes",function (assert) {
@@ -85,6 +85,35 @@ function runTests () {
             deleteNotes('.post');                                                                                       //Deleting Notes
             assert.equal($('.post').length,0, "Notes1 Successfully deleted" );
         });
+    QUnit.module( "parent module", function( hooks ) {
+            hooks.beforeEach( function( assert ) {
+               assert.ok( true, "beforeEach called" );
+            });
+
+            hooks.afterEach( function( assert ) {
+               assert.ok( true, "afterEach called" );
+            });
+
+            QUnit.test( "hook test 1", function( assert ) {
+               assert.expect( 2 );
+            });
+
+            QUnit.module( "nested hook module", function( hooks ) {
+               // This will run after the parent module's beforeEach hook
+               hooks.beforeEach( function( assert ) {
+                  assert.ok( true, "nested beforeEach called" );
+               });
+
+               // This will run before the parent module's afterEach
+               hooks.afterEach( function( assert ) {
+                  assert.ok( true, "nested afterEach called" );
+               });
+
+               QUnit.test( "hook test 2", function( assert ) {
+                  assert.expect( 4 );
+               });
+            });
+         });
 
     //CONSOLE LOG CODE
     QUnit.begin(function( details ) {                                                                                   //Notify the total no. of tests to be done
