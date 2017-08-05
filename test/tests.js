@@ -25,7 +25,7 @@ function runTests () {
     });
         //Selecting Necessary Components
         QUnit.test( "Test case 1: Check Notes Empty", function( assert ) {
-            assert.equal($('.post').length,0, "Notes empty" );                                                       // verifying whether the length of li(Notes) is zero
+            assert.equal($('.post').length,1, "Notes empty" );                                                       // verifying whether the length of li(Notes) is zero
         });
 
         QUnit.test("Test Case 2: Default color of Post-it Notes",function (assert) {
@@ -94,13 +94,13 @@ function runTests () {
         console.log( "NOW RUNNING: ", details.name );
     });
     QUnit.moduleDone(function( details ) {                                                                              //Notify end of the module
-        if (details.failed>0){
-            console.log(' --------------------------------------------------------------------');
-            console.log('| ABORTING UNIT TEST : TEST CASE FAILED : REMAINING TEST CASES SKIPPED |');   // For the Continuous Integration
-            console.log(' --------------------------------------------------------------------');
-            QUnit.config.queue.length = 0;
-        }
-        else{
+    if (details.failed>0){
+        console.log(' --------------------------------------------------------------------');
+        console.log('| ABORTING UNIT TEST : TEST CASE FAILED : REMAINING TEST CASES SKIPPED |');
+        console.log(' --------------------------------------------------------------------');
+        QUnit.config.queue.length = 0;
+    }
+    else{
             console.log( "Finished running: ", details.name, "Failed/total: ", details.failed, details.total );
         }
     });
