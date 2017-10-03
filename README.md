@@ -3,7 +3,7 @@ TDD javascript Application POST-IT NOTESwith the help of QUnit. Test Driven Deve
 
 ## Code comparison is shown below
 
-### Normal Development                                              Test Driven Development
+### Normal Development                             |                 Test Driven Development
 
 ![codecompare](https://github.com/haripery/unitTest_JS_Qunit/blob/master/compare2.jpeg)
 
