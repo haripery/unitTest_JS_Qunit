@@ -1,15 +1,25 @@
 # unitTest_JS_Qunit
 TDD javascript Application POST-IT NOTESwith the help of QUnit. Test Driven Development of javascript has big advantage of writing clean code.
 
+## Code comparison is shown below
 
+![codecompare](https://github.com/haripery/unitTest_JS_Qunit/blob/master/compare2.jpg)
 
-Post-it notes app entirely built on javascript with the help of Facade Design pattern(jQuery).It mainly consists of two main sections:
+Post-it notes app entirely built on javascript with the help of Facade Design pattern(jQuery).It mainly consists of two sections:
 - Add Notes
 - Delete Notes
 
-![beforenotes](https://github.com/haripery/unitTest_JS_Qunit/blob/master/postit1.jpeg)
+### Before Adding Notes
+
+![beforenotes](https://github.com/haripery/unitTest_JS_Qunit/blob/master/postit1_Fotor.jpg)
+
+### After Notes added
 
 ![afternotes](https://github.com/haripery/unitTest_JS_Qunit/blob/master/postit2.jpeg)
+
+### After Notes deletedNotes 
+
+![deletenotes](https://github.com/haripery/unitTest_JS_Qunit/blob/master/deletenotes.jpeg)
 
 ## HIGHLIGHTS:
  - Complete javascript webapp created with TEST DRIVEN DEVELOPMENT
