@@ -36,3 +36,6 @@ Post-it notes app entirely built on javascript with the help of Facade Design pa
  - CLONE THE unitTest_JS_Qunit REPOSITORY
  - open shell and navigate to the unitTest_JS_Qunit REPOSITORY
  - Execute the following command - $ phantomjs run-qunit.js test/qunit.html
+ 
+ ##Output in Command Line
+ ![unittest](https://github.com/haripery/unitTest_JS_Qunit/blob/master/lib/Pics/cli_unittest.jpeg)
