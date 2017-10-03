@@ -1,7 +1,7 @@
 # unitTest_JS_Qunit
 TDD javascript Application POST-IT NOTESwith the help of QUnit
 
-![notesGeneral][https://github.com/haripery/unitTest_JS_Qunit/blob/master/postit1.jpeg]
+![notesGeneral](https://github.com/haripery/unitTest_JS_Qunit/blob/master/postit1.jpeg)
 
 ##HIGHLIGHTS:
  - Complete javascript webapp created with TEST DRIVEN DEVELOPMENT
