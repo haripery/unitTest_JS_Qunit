@@ -3,7 +3,7 @@ TDD javascript Application POST-IT NOTESwith the help of QUnit. Test Driven Deve
 
 ## Code comparison is shown below
 
-![codecompare](https://github.com/haripery/unitTest_JS_Qunit/blob/master/compare2.jpg)
+![codecompare](https://github.com/haripery/unitTest_JS_Qunit/blob/master/compare2.jpeg)
 
 Post-it notes app entirely built on javascript with the help of Facade Design pattern(jQuery).It mainly consists of two sections:
 - Add Notes
